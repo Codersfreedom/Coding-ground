@@ -14,9 +14,9 @@ const getInitialState = ()=> {
     }
     }
     // if it's on client side return values from browser localstorage
-    const savedLanguage = localStorage.getItem("editor-language");
-    const savedTheme = localStorage.getItem("editor-theme");
-    const savedFontSize = localStorage.getItem("editor-fontSize");
+    const savedLanguage = localStorage.getItem("editor-language") || "javascript";
+    const savedTheme = localStorage.getItem("editor-theme") || "vs-dark";
+    const savedFontSize = localStorage.getItem("editor-fontSize") || 16;
 
     return {
         language:savedLanguage,
@@ -51,6 +51,12 @@ export const useCodeEditorStore = create<CodeEditorState>((set,get)=>{
 
             }
             localStorage.setItem(`editor-language`,language);
+
+            set({
+                language,
+                output: "",
+                error: null,
+            });
 
         },
         setTheme:(theme:string)=>{
