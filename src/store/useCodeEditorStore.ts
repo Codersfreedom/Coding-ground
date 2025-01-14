@@ -21,7 +21,7 @@ const getInitialState = ()=> {
 
     return {
         language:savedLanguage,
-        fontSize:savedFontSize,
+        fontSize:Number(savedFontSize),
         theme:savedTheme,
     }
 }
